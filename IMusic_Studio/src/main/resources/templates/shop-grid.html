@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments::head_html">
+
+</head>
+
+<body>
+<div th:replace="fragments::header" ></div>
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="img/pexels-pixabay-159355.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Imusic</h2>
+                        <div class="breadcrumb__option">
+                            <a th:href="@{/index}">Trang chủ </a>
+                            <span>Sản phẩm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Product Section Begin -->
+    <section class="product spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-5">
+                    <div class="sidebar">
+                        <div class="sidebar__item">
+                            <h4>Sản phẩm</h4>
+                            <div th:fragment="category">
+                                <ul >
+                                    <li th:each="category : ${categories}">
+                                        <a th:href="@{/products/{categoryId}(categoryId=${category.id})}" th:text="${category.categoryName}"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- <div class="sidebar__item">
+                            <h4>Giá</h4>
+                            <div class="price-range-wrap">
+                                <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
+                                    data-min="10" data-max="540">
+                                    <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
+                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+                                </div>
+                                <div class="range-slider">
+                                    <div class="price-input">
+                                        <input type="text" id="minamount">
+                                        <input type="text" id="maxamount">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sidebar__item sidebar__item__color--option">
+                            <h4>Colors</h4>
+                            <div class="sidebar__item__color sidebar__item__color--white">
+                                <label for="white">
+                                    White
+                                    <input type="radio" id="white">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__color sidebar__item__color--gray">
+                                <label for="gray">
+                                    Gray
+                                    <input type="radio" id="gray">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__color sidebar__item__color--red">
+                                <label for="red">
+                                    Red
+                                    <input type="radio" id="red">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__color sidebar__item__color--black">
+                                <label for="black">
+                                    Black
+                                    <input type="radio" id="black">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__color sidebar__item__color--blue">
+                                <label for="blue">
+                                    Blue
+                                    <input type="radio" id="blue">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__color sidebar__item__color--green">
+                                <label for="green">
+                                    Green
+                                    <input type="radio" id="green">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="sidebar__item">
+                            <h4>Popular Size</h4>
+                            <div class="sidebar__item__size">
+                                <label for="large">
+                                    Large
+                                    <input type="radio" id="large">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__size">
+                                <label for="medium">
+                                    Medium
+                                    <input type="radio" id="medium">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__size">
+                                <label for="small">
+                                    Small
+                                    <input type="radio" id="small">
+                                </label>
+                            </div>
+                            <div class="sidebar__item__size">
+                                <label for="tiny">
+                                    Tiny
+                                    <input type="radio" id="tiny">
+                                </label>
+                            </div>
+                        </div> -->
+                        <div class="sidebar__item">
+                            <div class="latest-product__text">
+                                <h4>Các sản phẩm mới nhất</h4>
+                                <div class="latest-product__slider owl-carousel" >
+                                    <div class="latest-product__slider__item" >
+                                        <a th:href="@{/shop-details/{id}(id=${product.id})}" class="latest-product__item" th:each="product : ${productsNew1}">
+                                            <div class="latest-product__item__pic">
+                                                <img th:src="${product.productImage}" >
+                                            </div>
+                                            <div class="latest-product__item__text">
+                                                <h6 th:text="${product.productName}"></h6>
+                                                <span th:text="${product.productPrice}"> vnd</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="latest-product__slider__item" >
+                                        <a th:href="@{/shop-details/{id}(id=${product.id})}" class="latest-product__item" th:each="product : ${productsNew2}">
+                                            <div class="latest-product__item__pic">
+                                                <img th:src="${product.productImage}" >
+                                            </div>
+                                            <div class="latest-product__item__text">
+                                                <h6 th:text="${product.productName}"></h6>
+                                                <span th:text="${product.productPrice}"> vnd</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-9 col-md-7">
+<!--                    <div class="product__discount">-->
+<!--                        <div class="section-title product__discount__title">-->
+<!--                            <h2>Giảm giá</h2>-->
+<!--                        </div>-->
+<!--                        <div class="row">-->
+<!--                            <div class="product__discount__slider owl-carousel">-->
+<!--                                <div class="col-lg-4">-->
+<!--                                    <a class="product__discount__item" href="shop-details.html">-->
+<!--                                        <img class="product__discount__item__pic set-bg"-->
+<!--                                            data-setbg="img/guitar/cordoba-C1M-CE-01-450x471.jpg">-->
+<!--                                            <div class="product__discount__percent">-20%</div>-->
+
+<!--                                        </img>-->
+<!--                                        <div class="product__discount__item__text">-->
+<!--                                            <span>Dried Fruit</span>-->
+<!--                                            <h5><a href="shop-details.html">Raisin’n’nuts</a></h5>-->
+<!--                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>-->
+<!--                                        </div>-->
+<!--                                    </a>-->
+<!--                                </div>-->
+<!--                                <div class="col-lg-4">-->
+<!--                                    <div class="product__discount__item">-->
+<!--                                        <div class="product__discount__item__pic set-bg"-->
+<!--                                            data-setbg="img/guitar/Kapok-D-118AC-1-400x400-450x471.jpg">-->
+<!--                                            <div class="product__discount__percent">-20%</div>-->
+<!--                                            <ul class="product__item__pic__hover">-->
+
+<!--                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>-->
+<!--                                            </ul>-->
+<!--                                        </div>-->
+<!--                                        <div class="product__discount__item__text">-->
+<!--                                            <span>Vegetables</span>-->
+<!--                                            <h5><a href="shop-details.html">Vegetables’package</a></h5>-->
+<!--                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-lg-4">-->
+<!--                                    <div class="product__discount__item">-->
+<!--                                        <div class="product__discount__item__pic set-bg"-->
+<!--                                            th:src="@{img/organ/dan_organ_casio_CT_S200_den_2-450x471.png}">-->
+<!--                                            <div class="product__discount__percent">-20%</div>-->
+<!--                                            <ul class="product__item__pic__hover">-->
+
+<!--                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>-->
+<!--                                            </ul>-->
+<!--                                        </div>-->
+<!--                                        <div class="product__discount__item__text">-->
+<!--                                            <span>Dried Fruit</span>-->
+<!--                                            <h5><a href="shop-details.html">Mixed Fruitss</a></h5>-->
+<!--                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-lg-4">-->
+<!--                                    <div class="product__discount__item">-->
+<!--                                        <div class="product__discount__item__pic set-bg"-->
+<!--                                            data-setbg="img/organ/Casiotone-CT-S410-450x471.jpg">-->
+<!--                                            <div class="product__discount__percent">-20%</div>-->
+<!--                                            <ul class="product__item__pic__hover">-->
+
+<!--                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>-->
+<!--                                            </ul>-->
+<!--                                        </div>-->
+<!--                                        <div class="product__discount__item__text">-->
+<!--                                            <span>Dried Fruit</span>-->
+<!--                                            <h5><a href="shop-details.html">Raisin’n’nuts</a></h5>-->
+<!--                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-lg-4">-->
+<!--                                    <div class="product__discount__item">-->
+<!--                                        <div class="product__discount__item__pic set-bg"-->
+<!--                                            data-setbg="img/organ/dan-organ-casiotone-lk-s250-450x471.jpg">-->
+<!--                                            <div class="product__discount__percent">-20%</div>-->
+<!--                                            <ul class="product__item__pic__hover">-->
+
+<!--                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>-->
+<!--                                            </ul>-->
+<!--                                        </div>-->
+<!--                                        <div class="product__discount__item__text">-->
+<!--                                            <span>Dried Fruit</span>-->
+<!--                                            <h5><a href="shop-details.html">Raisin’n’nuts</a></h5>-->
+<!--                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="col-lg-4">-->
+<!--                                    <div class="product__discount__item">-->
+<!--                                        <div class="product__discount__item__pic set-bg"-->
+<!--                                            data-setbg="img/piano/dan-piano-dien-roland-rp30-chinh-hang-450x471.jpg">-->
+<!--                                            <div class="product__discount__percent">-20%</div>-->
+<!--                                            <ul class="product__item__pic__hover">-->
+
+<!--                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>-->
+<!--                                            </ul>-->
+<!--                                        </div>-->
+<!--                                        <div class="product__discount__item__text">-->
+<!--                                            <span>Dried Fruit</span>-->
+<!--                                            <h5><a href="shop-details.html">Raisin’n’nuts</a></h5>-->
+<!--                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                    <div class="filter__item">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-5">
+                                <div class="filter__sort">
+                                    <span>Sort By</span>
+                                     <select id="sortSelect" onchange="changeSort()">
+                                        <option value="name_asc" th:selected="${sort_option == 'name_asc'}">Tăng dần theo tên</option>
+                                        <option value="name_desc" th:selected="${sort_option == 'name_desc'}">Giảm dần theo tên</option>
+                                        <option value="price_asc" th:selected="${sort_option == 'price_asc'}">Tăng dần theo giá</option>
+                                        <option value="price_desc" th:selected="${sort_option == 'price_desc'}">Giảm dần theo giá</option>
+                                    </select>
+                                    <input type="hidden" id="currentPage" th:value="${currentPage}"/>
+                                    <input type="hidden" id="key" th:value="${key}"/>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4">
+                                <div class="filter__found">
+                                    <h6><span th:text="${products.size()}"></span> Products found</h6>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-3">
+<!--                                <div class="filter__option">-->
+<!--                                    <span class="icon_grid-2x2"></span>-->
+<!--                                    <span class="icon_ul"></span>-->
+<!--                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-6" th:each="product : ${products}">
+                            <div class="card mb-4 shadow-sm" >
+                                <a th:href="@{/shop-details/{id}(id=${product.id})}" >
+                                    <img class="product__item__pic set-bg"  th:src="${product.productImage}">
+
+                                </a>
+                                <div class="product__item__text">
+                                    <h6><a th:href="@{/shop-details/{id}(id=${product.id})}" th:text="${product.productName}"></a></h6>
+                                    <h5  ><span th:text="${product.productPrice}"/> VND</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                         <div class="product__pagination  ">
+                                <a th:class="${currentPage == 1 ? 'disabled' : ''}"  th:href="@{${url}(page=${currentPage - 1}, name=${key}, sort=${sort_option})}"><i class="fa fa-long-arrow-left"></i></a>
+                                <a th:class="${pageNumber == currentPage ? 'active' : ''}" th:href="@{${url}(page=${pageNumber}, name=${key}, sort=${sort_option})}" th:each="pageNumber : ${#numbers.sequence(1, totalPages)}" th:text="${pageNumber}"></a>
+                                <a  th:class="${currentPage == totalPages ? 'disabled' : ''}" th:href="@{${url}(page=${currentPage + 1}, name=${key}, sort=${sort_option})}"><i class="fa fa-long-arrow-right"></i></a>
+
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Product Section End -->
+
+<div th:replace="fragments::footer" ></div>
+
+</body>
+
+</html>

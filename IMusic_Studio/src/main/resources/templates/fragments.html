@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeLeaf-extras-springsecurity5">
+<head th:fragment="head_html">
+  <meta http-equiv="Content-Type" content="text/html">
+    <meta charset="UTF-8">
+      <meta name="description" content="Ogani Template">
+      <meta name="keywords" content="Ogani, unica, creative, html">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>[[${title}]]</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+  <!-- Css Styles -->
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+  <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" type="text/css">
+  <link rel="stylesheet" th:href="@{/css/elegant-icons.css}" type="text/css">
+  <link rel="stylesheet" th:href="@{/css/nice-select.css}" type="text/css">
+  <link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" type="text/css">
+  <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}" type="text/css">
+  <link rel="stylesheet" th:href="@{/css/slicknav.min.css}" type="text/css">
+  <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+</head>
+<body>
+  <div th:fragment="header" id="headerID">
+
+    <!-- Humberger Begin -->
+    <div class="humberger__menu__overlay"></div>
+    <div class="humberger__menu__wrapper">
+      <div class="humberger__menu__logo">
+        <a href="#"><img th:src="@{/img/logoIMusic.png}" alt=""></a>
+      </div>
+      <div class="humberger__menu__cart">
+        <ul>
+          <li><a th:href="@{/shoping-cart}"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+        </ul>
+        <div class="header__cart__price">item: <span>$150.00</span></div>
+      </div>
+      <div class="humberger__menu__widget">
+        <div class="header__top__right__language">
+        </div>
+        <div class="header__top__right__auth">
+          <a href="#"><i class="fa fa-user"></i> Login</a>
+        </div>
+      </div>
+      <nav class="humberger__menu__nav mobile-menu">
+            <ul class="header__menu__dropdown">
+              <li class="active"><a th:href="@{/home}">TRANG CHỦ</a></li>
+              <li><a th:href="@{/shop-grid}">SẢN PHẨM</a></li>
+              <li><a th:href="@{/shoping-cart}">THANH TOÁN</a></li>
+              <li><a th:href="@{/blog}">TIN TỨC</a></li>
+              <li><a th:href="@{/contact}">LIÊN HỆ</a></li>
+            </ul>
+
+      </nav>
+      <div id="mobile-menu-wrap"></div>
+      <div class="header__top__right__social">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        <a href="#"><i class="fa fa-pinterest-p"></i></a>
+      </div>
+      <div class="humberger__menu__contact">
+        <ul>
+          <li><i class="fa fa-envelope"></i> imusicstudio4nvb@gmail.com</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Humberger End -->
+
+    <!-- Header Section Begin -->
+    <header class="header">
+      <div class="header__top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-md-6">
+              <div class="header__top__left">
+                <ul>
+                  <li><i class="fa fa-envelope"></i>imusicstudio4nvb@gmail.com</li>
+                  <!-- <li>Miễng phí giao hàng cho đơn hàng trên 2.000.000 VNĐ</li> -->
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+              <div class="header__top__right">
+                <div class="header__top__right__social">
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-linkedin"></i></a>
+                  <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                </div>
+
+                <div class="header__top__right__auth">
+                  <a th:if="${myUser==null}" href="/login"><i class="fa fa-user"></i> Đăng nhập</a>
+                  <a th:if="${myUser!=null}" href="/logout" >[[${myUser.fullName}]]   <i class="fa fa-sign-out"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-2">
+            <div class="header__logo">
+              <a th:href="@{/home}"><img th:src="@{/img/logoIMusic.png}" alt=""></a>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <nav class="header__menu">
+              <ul>
+                <li class="active"><a th:href="@{/home}">TRANG CHỦ</a></li>
+                <li><a th:href="@{/products}">SẢN PHẨM</a></li>
+                <li><a th:href="@{/shoping-cart}">THANH TOÁN</a>
+                  <!-- <ul class="header__menu__dropdown">
+                      <li><a href="./shop-details.html">Shop Details</a></li>
+                      <li><a href="./shoping-cart.html">Shoping Cart</a></li>
+                      <li><a href="./checkout.html">Check Out</a></li>
+                      <li><a href="./blog-details.html">Blog Details</a></li>
+                  </ul> -->
+                </li>
+                <li><a th:href="@{/blog}">TIN TỨC</a></li>
+                <li><a th:href="@{/contact}">LIÊN HỆ</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="col-lg-3">
+            <div class="header__cart">
+              <ul>
+                <!-- <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li> -->
+                <li><a th:href="@{/shoping-cart}"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+              </ul>
+              <div class="header__cart__price">item: <span>$150.00</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="humberger__open">
+          <i class="fa fa-bars"></i>
+        </div>
+      </div>
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Hero Section Begin -->
+    <section class="hero hero-normal">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="hero__categories" >
+              <div class="hero__categories__all" >
+                <i class="fa fa-bars" ></i>
+                <span >Danh mục</span>
+              </div>
+              <div >
+                <ul >
+                  <li th:each="category : ${categories}">
+                    <a th:href="@{/products/{categoryId}(categoryId=${category.id})}" th:text="${category.categoryName}"></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-9">
+            <div class="hero__search">
+              <div class="hero__search__form">
+                <form action="/products/search" method="get">
+                  <!-- <div class="hero__search__categories">
+                      All Categories
+                      <span class="arrow_carrot-down"></span>
+                  </div> -->
+                  <input type="text" name="name" placeholder="Nhập sản phẩm bạn cần tìm">
+                  <button type="submit" class="site-btn">TÌM KIẾM</button>
+                </form>
+              </div>
+              <div class="hero__search__phone">
+                <div class="hero__search__phone__icon">
+                  <i class="fa fa-phone"></i>
+                </div>
+                <div class="hero__search__phone__text">
+                  <h5>0342455466</h5>
+                  <span>hỗ trợ 24/7</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Hero Section End -->
+
+  </div>
+
+
+
+
+<!--  HERO-->
+<div th:fragment="hero">
+  <div class="hero__item set-bg" data-setbg="img/hero/wp3206560.jpg">
+    <div  class="hero__text">
+      <!-- <span> FRUIT FRESH</span> -->
+      <h2>NHẠC CỤ HOÀN THIỆN 100% </h2>
+      <p>Nhanh tay sở hữu đi nào!</p>
+      <!-- <a href="#" class="primary-btn">MUA NGAY</a> -->
+    </div>
+  </div>
+</div>
+
+
+<!--  FEATURED-->
+
+    <div th:fragment="featured">
+    <section class="featured spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="section-title">
+              <h2>SẢN PHẨM NỔI BẬT</h2>
+            </div>
+            <div class="featured__controls">
+              <ul>
+
+                <a th:href="@{/home}" ><li class="active mr-2" data-filter="*">Tất cả</li> </a>
+                <a class="mr-2" href="" th:each="category : ${categories}" th:href="@{/home/category/{id}(id=${category.id})}">
+                  <li data-filter="*" th:text="${category.categoryName}"></li>
+                </a>
+<!--                <li data-filter=".guitar">Guitar</li>-->
+<!--                <li data-filter=".organ">Organ</li>-->
+<!--&lt;!&ndash;                <li data-filter=".ken">Kèn</li>&ndash;&gt;-->
+<!--                <li><a th:href="@{/home/category/003}">KÈN</a></li>-->
+<!--                <li data-filter=".piano">Piano</li>-->
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row featured__filter" >
+          <div class="col-lg-3 col-md-4 col-sm-6 mix oranges guitar" th:each="product : ${products}">
+            <div  class="featured__item">
+              <a th:href="@{/shop-details/{id}(id=${product.id})}" >
+                <img class="featured__item__pic set-bg"  th:src="${product.productImage}">
+              </a>
+
+              <div class="featured__item__text">
+                <h6 th:text="${product.productName}"><a th:href="@{/shop-details/{id}(id=${product.id})}"></a></h6>
+                <h5 th:text="${product.productPrice}">VND</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+
+
+
+<!--  FOOTER-->
+
+  <div th:fragment="footer">
+    <footer class="footer spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="footer__about">
+              <div class="footer__about__logo">
+                <a th:href="@{/index}"><img th:src="@{/img/logoIMusic.png}" alt=""></a>
+              </div>
+              <ul>
+                <li>Địa chỉ: 12 Nguyễn Văn Bảo, Gò Vấp, TP.HCM</li>
+                <li>Liên hệ: 0342455466</li>
+                <li>Email: Instrument@gmail.com</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">
+            <div class="footer__widget">
+              <h6>Thông tin liên quan</h6>
+              <ul>
+                <li><a href="#">Về chúng tôi</a></li>
+                <li><a href="#">Sản phẩm của chúng tôi</a></li>
+                <li><a href="#">Bảo mật</a></li>
+                <li><a href="#">Thông tin giao hàng</a></li>
+                <li><a href="#">Chính sách bảo mật</a></li>
+                <li><a href="#">Vị trí</a></li>
+              </ul>
+              <ul>
+                <li><a href="#">Chúng tôi là ai</a></li>
+                <li><a href="#">Dịch vụ của chúng tôi</a></li>
+
+                <li><a href="#">Liên hệ</a></li>
+                <li><a href="#">Đổi mới</a></li>
+                <li><a href="#">Chứng thực</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-12">
+            <div class="footer__widget">
+              <h6>Tham gia để xem những thông tin mới nhất</h6>
+              <p>Nhập gmail để có thông tin mới nhất về sản phẩm</p>
+              <form action="#">
+                <input type="text" placeholder="Nhập gmail của bạn">
+                <button type="submit" class="site-btn">Đăng ký</button>
+              </form>
+              <div class="footer__widget__social">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-pinterest"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer Section End -->
+    <!-- Js Plugins -->
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/jquery.nice-select.min.js}"></script>
+    <script th:src="@{/js/jquery-ui.min.js}"></script>
+    <script th:src="@{/js/jquery.slicknav.js}"></script>
+    <script th:src="@{/js/mixitup.min.js}"></script>
+    <script th:src="@{/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+  </div>
+
+
+</body>
+</html>
